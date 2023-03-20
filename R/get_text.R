@@ -3,6 +3,7 @@
 # library
 library(tidytext)
 library(readtext)
+library(dplyr)
 library(ggplot2)
 library(ggthemes)
 library(textdata)
