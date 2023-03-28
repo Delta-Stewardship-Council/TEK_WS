@@ -20,7 +20,7 @@ tidy_pdf <- readtext(files)
 tidy_words <- tidy_pdf %>%
   unnest_tokens(word, text)
 
-write.csv(tidy_words, "Data/raw_text_data.csv")
+#write.csv(tidy_words, "Data/raw_text_data.csv")
 
 # clean text
 # test
@@ -73,4 +73,4 @@ check_stem  %>%
 
 
 
-write.csv(tidy_stop_num_words, "Data/clean_text_data.csv")
+#write.csv(tidy_stop_num_words, "Data/clean_text_data.csv")
