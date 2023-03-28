@@ -28,12 +28,12 @@ pdf_doc <- unique(tidy_pdf$doc_id) #98
 tidy_doc <- unique(tidy_words$doc_id) #94
 setdiff(pdf_doc, tidy_doc)
 
-# stop words
+# remove stop words
 tidy_stop_words <- tidy_words %>%
   anti_join(stop_words) # without stop words
 # 583769 less words
 
-# numbers and symbols
+# remove numbers and symbols
 tidy_stop_num_words <- mutate(tidy_stop_words, word = gsub(x = word, pattern = "[0-9]+|[[:punct:]]|\\(.*\\)", replacement = ""))
 
 tidy_stop_num_words <-  tidy_stop_num_words[!(is.na(tidy_stop_num_words$word) | tidy_stop_num_words$word ==""), ]
@@ -47,17 +47,30 @@ check  %>%
   mutate(word = reorder(word, n)) %>%
   ggplot(aes(word, n)) +
   geom_col(fill = "darkred") +
-  theme_fivethirtyeight() +
   xlab(NULL) +
   ylab("Word Count") +
   coord_flip() +
   ggtitle("Word Usage") # looks good, but still has some weird stuff... "al" is 15th
 
-# root word
+# add root word
 tidy_stop_num_words$stem <- stemDocument(tidy_stop_num_words$word)
+
+check_stem <- tidy_stop_num_words %>%
+  count(stem, sort = TRUE)
+
+check_stem  %>%
+  filter(n > 1000) %>%
+  mutate(stem = reorder(stem, n)) %>%
+  ggplot(aes(stem, n)) +
+  geom_col(fill = "darkred") +
+  xlab(NULL) +
+  ylab("Stem word Count") +
+  coord_flip() +
+  ggtitle("Stem word Usage") #
+
 
 # remove remaining unique text
 
 
 
-write.csv(tidy_words, "Data/clean_text_data.csv")
+write.csv(tidy_stop_num_words, "Data/clean_text_data.csv")
