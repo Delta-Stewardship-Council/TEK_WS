@@ -14,7 +14,7 @@ tidy_pdf <- readtext(files)
 tidy_words <- tidy_pdf %>%
   unnest_tokens(word, text)
 
-# try some stuff...
+# try some stuff...(from https://kayleealexander.com/wp-content/uploads/2019/05/TIDY-TEXT-2019.pdf)
 # Which words appear most frequently and how many times do they each appear?
 quetion_1 <- tidy_words %>%
   count(word, sort = TRUE)
