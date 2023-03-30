@@ -1,5 +1,6 @@
 # QC stem words
 # add synonyms to simplify analyses
+
 # library
 library(dplyr)
 
