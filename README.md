@@ -9,4 +9,4 @@ The literature review's objectives are to:
 4. To summarize/synthesize select literature as background for a larger assessment.
 5. To build a resource that can support ongoing dialogue with internal leadership, Council members, and external (Tribal and non-Tribal) partners.
 
-This repository is in development (for more information: Pascale.Goertler@deltacouncil.ca.gov).
+This repository is in development (for more information: Pascale.Goertler@deltacouncil.ca.gov, Aaron.Angel@deltacouncil.ca.gov & dylan.stern@deltacouncil.ca.gov).
