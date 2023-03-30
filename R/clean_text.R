@@ -25,7 +25,7 @@ pdf_doc <- unique(tidy_pdf$doc_id) #98
 tidy_doc <- unique(tidy_words$doc_id) #94
 setdiff(pdf_doc, tidy_doc)
 
-write.csv(tidy_words, "Data/raw_text_data.csv")
+write.csv(tidy_words, "Data/raw_text_data.csv", row.names = FALSE)
 
 # clean text
 # remove stop words
@@ -74,4 +74,4 @@ unique_text <- check_stem %>%
 
 # as of 3/30/23 discussion, we are going to keep unique words for now, but may not be part of the synonym work and analyses
 
-write.csv(tidy_stop_num_words, "Data/clean_text_data.csv")
+write.csv(tidy_stop_num_words, "Data/clean_text_data.csv", row.names = FALSE)
