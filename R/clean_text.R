@@ -20,14 +20,14 @@ tidy_pdf <- readtext(files)
 tidy_words <- tidy_pdf %>%
   unnest_tokens(word, text)
 
-#write.csv(tidy_words, "Data/raw_text_data.csv")
-
-# clean text
 # test
 pdf_doc <- unique(tidy_pdf$doc_id) #98
 tidy_doc <- unique(tidy_words$doc_id) #94
 setdiff(pdf_doc, tidy_doc)
 
+#write.csv(tidy_words, "Data/raw_text_data.csv")
+
+# clean text
 # remove stop words
 tidy_stop_words <- tidy_words %>%
   anti_join(stop_words) # without stop words
@@ -68,9 +68,9 @@ check_stem  %>%
   coord_flip() +
   ggtitle("Stem word Usage") #
 
-
 # remove remaining unique text
 
-
+unique_text <- check_stem %>%
+  filter(n > 10) # loose 24944
 
 #write.csv(tidy_stop_num_words, "Data/clean_text_data.csv")
