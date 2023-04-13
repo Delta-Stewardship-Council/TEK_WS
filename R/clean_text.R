@@ -20,7 +20,7 @@ tidy_pdf <- readtext(files)
 tidy_words <- tidy_pdf %>%
   unnest_tokens(word, text)
 
-#write.csv(tidy_words, "Data/raw_text_data.csv")
+write.csv(tidy_words, "Data/raw_text_data.csv")
 
 # clean text
 # test
@@ -70,7 +70,9 @@ check_stem  %>%
 
 
 # remove remaining unique text
+unique_text <- check_stem %>%
+  filter(n > 10) # loose 24944
 
+# as of 3/30/23 discussion, we are going to keep unique words for now, but may not be part of the synonym work and analyses
 
-
-#write.csv(tidy_stop_num_words, "Data/clean_text_data.csv")
+write.csv(tidy_stop_num_words, "Data/clean_text_data.csv", row.names = FALSE)

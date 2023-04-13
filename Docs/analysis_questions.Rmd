@@ -1,0 +1,40 @@
+---
+title: "Analysis_Questions"
+author: "Pascale Goertler, Aaron Angel, Dylan Stern"
+date: "2023-03-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analysis Questions
+
+# Initial Brainstorming
+
+Look for patterns related to geography and types of involved actors and application type (restoration, climate change, water management, etc.) 
+
+Look for patterns in characterization/description of TK and year (possibly relating year to key words like “holistic” “spiritual” “place-based” “relationship” etc.) 
+
+Something about relationship, reciprocity, respect – maybe even just quantifying how often they appear? 
+
+Negative words/connotation of native authors vs. non-native authors 
+
+Look for ~ “success” (qualitative). Knowledge + colonialism. Where are definitions of TK and WS?  
+
+Progression over years of new vocabulary (using our glossary). Similar to Sean’s Evolution of words over time. 
+
+## Question 1
+
+```{r question 1, echo=FALSE}
+
+```
+
+## Question 2
+
+```{r question 2, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
