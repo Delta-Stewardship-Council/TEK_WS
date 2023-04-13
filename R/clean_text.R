@@ -25,13 +25,13 @@ write.csv(tidy_words, "Data/raw_text_data.csv")
 # clean text
 # test
 pdf_doc <- unique(tidy_pdf$doc_id) #98
-tidy_doc <- unique(tidy_words$doc_id) #94
+tidy_doc <- unique(tidy_words$doc_id) #98
 setdiff(pdf_doc, tidy_doc)
 
 # remove stop words
 tidy_stop_words <- tidy_words %>%
   anti_join(stop_words) # without stop words
-# 583769 less words
+# 594917 less words
 
 # remove numbers and symbols
 tidy_stop_num_words <- mutate(tidy_stop_words, word = gsub(x = word, pattern = "[0-9]+|[[:punct:]]|\\(.*\\)", replacement = ""))
@@ -76,3 +76,5 @@ unique_text <- check_stem %>%
 # as of 3/30/23 discussion, we are going to keep unique words for now, but may not be part of the synonym work and analyses
 
 write.csv(tidy_stop_num_words, "Data/clean_text_data.csv", row.names = FALSE)
+
+# 4/13/23 updated clean text test & remove stop words annotated text
