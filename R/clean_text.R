@@ -31,7 +31,7 @@ setdiff(pdf_doc, tidy_doc)
 # remove stop words
 tidy_stop_words <- tidy_words %>%
   anti_join(stop_words) # without stop words
-# 594917 less words
+# 594923 less words
 
 # remove numbers and symbols
 tidy_stop_num_words <- mutate(tidy_stop_words, word = gsub(x = word, pattern = "[0-9]+|[[:punct:]]|\\(.*\\)", replacement = ""))
@@ -78,3 +78,4 @@ unique_text <- check_stem %>%
 write.csv(tidy_stop_num_words, "Data/clean_text_data.csv", row.names = FALSE)
 
 # 4/13/23 updated clean text test & remove stop words annotated text
+# 4/24/23 updated annotation at remove stop words
