@@ -24,8 +24,8 @@ write.csv(tidy_words, "Data/raw_text_data.csv")
 
 # clean text
 # test
-pdf_doc <- unique(tidy_pdf$doc_id) #98
-tidy_doc <- unique(tidy_words$doc_id) #94
+pdf_doc <- unique(tidy_pdf$doc_id) #99
+tidy_doc <- unique(tidy_words$doc_id) #99
 setdiff(pdf_doc, tidy_doc)
 
 # remove stop words
