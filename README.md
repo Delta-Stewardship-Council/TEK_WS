@@ -9,4 +9,6 @@ The literature review's objectives are to:
 4. To summarize/synthesize select literature as background for a larger assessment.
 5. To build a resource that can support ongoing dialogue with internal leadership, Council members, and external (Tribal and non-Tribal) partners.
 
+Currently, [clean_text](https://github.com/Delta-Stewardship-Council/TEK_WS_text/blob/main/R/clean_text.R) can be used to create both a [raw] (https://github.com/Delta-Stewardship-Council/TEK_WS_text/blob/main/Data/raw_text_data.csv) and [clean] (https://github.com/Delta-Stewardship-Council/TEK_WS_text/blob/main/Data/clean_text_data.csv) text data file, which includes all pdfs considered for this review. The cleaning included removing stop words, numbers and symbols. Pdfs can be found in the [Data] (https://github.com/Delta-Stewardship-Council/TEK_WS_text/tree/main/Data) folder.
+
 This repository is in development (for more information: Pascale.Goertler@deltacouncil.ca.gov, Aaron.Angel@deltacouncil.ca.gov & dylan.stern@deltacouncil.ca.gov).
