@@ -9,6 +9,7 @@ text_data <- read.csv("Data/clean_text_data.csv")
 head(text_data)
 str(text_data)
 
+
 # remove pdfs without metadata (not read by group)
 meta_data <- read.csv("Data/clean_meta_data.csv")
 head(meta_data)
@@ -24,7 +25,7 @@ head(make_key)
 
 # add frequency of words in data
 word_count <- reduce_by_ID %>%
-  count(word)
+
 
 make_key_w_count <- merge(make_key, word_count, by = "word", all = TRUE)
 head(make_key_w_count)
