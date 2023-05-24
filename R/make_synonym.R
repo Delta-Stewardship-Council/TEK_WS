@@ -23,6 +23,7 @@ head(make_key_w_count)
 # reorder
 make_key_w_count %>%
   arrange(desc(n))
+sum(make_key_w_count$n)
 
 # remove non words manually
 clean_key <- make_key_w_count %>%
@@ -35,36 +36,52 @@ clean_key <- make_key_w_count %>%
 # make synonyms packages
 library(quanteda)
 library(spacyr)
-#Sys.setenv(RETICULATE_PYTHON = "~/Users/aangel/AppData/Local/Programs/R/R-4.2.3/library")
 library(reticulate)
 
-# troubleshooting issue below - will remove if python installation resolves, lines 42-45
-use_condaenv("r-reticulate")
+# ensure python & anaconda programs are installed before running the code below
 Sys.which("python")
 Sys.which("conda")
-spacy_download_langmodel("en_core_web_lg", conda = "auto")
+
+# for more informaton on creating & activating the spacy_condaenv, see amatsuo's comment 2/5/19 https://github.com/quanteda/spacyr/issues/156
+spacy_download_langmodel("en_core_web_lg", envname = "spacy_condaenv",conda = "auto")
 
 # make synonyms - lemmatization (this may expedite the process of grouping together inflected forms of the same word; see https://stackoverflow.com/questions/61257802/r-text-mining-grouping-similar-words-using-stemdocuments-in-tm-package)
-sp <- spacy_parse(tidy_stop_num_words$word, lemma = TRUE)
+#library(textstem) #another method
+#lemma <- lemmatize_words(make_key_w_count$word)
 
-words_tok <- as.tokens(tidy_stop_num_words$word) %>%
-  tokens(remove_punct = TRUE) # create tokens
+sp <- spacy_parse(make_key_w_count$word, lemma = TRUE, entity = F)
+
+# get count of all words for each lemma
+lemma <- lemma %>%
+  group_by(lemma) %>%
+  count(lemma, sort = T)
+#!!! lemmatization resulted in a dramatic reduction in the list of words
+
+#check to make sure there was no word loss
+sum(lemma$n)
+
+# check some synonyms noted previously
+lemma %>%
+  filter(lemma == "relate")
+
+sp %>%
+  filter(lemma == "et")
 
 # define equivalencies for word variants
 syn <- dictionary(list(
-  agency = c("agency", "agencies"),
+  #agency = c("agency", "agencies"),
   colonial = c("colonial", "colonialism"),
   community = c("community", "communities"),
-  cultural = c("cultural", "culture", "cultures"),
-  ecosystem = c("ecosystem", "ecosystems"),
+  #cultural = c("cultural", "culture", "cultures"), #plural is removed, ADJ vs Noun is not
+  #ecosystem = c("ecosystem", "ecosystems"),
   environment = c("environment", "environmental"),
-  food = c("food", "foods"),
-  government = c("governments", "government"),
-  indigenous = c("indigenous", "native", "tribes", "indian", "indians"), #tribal?
-  people = c("people", "human", "humans"),
-  relationship = c("relationship", "relationships"),
+  #food = c("food", "foods"),
+  #government = c("governments", "government"),
+  indigenous = c("indigenous", "native", "tribes", "indian"), #tribal? #native/natives ADJ vs Noun was combined
+  people = c("people", "human"),
+  #relationship = c("relationship", "relationships"),
   science = c("science", "scientific"),
-  study = c("study", "studies"),
+  #study = c("study", "studies"),
   tradition = c("traditions", "traditional"),
   women = c("woman", "womans")
     ))
