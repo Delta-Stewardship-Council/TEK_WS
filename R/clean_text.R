@@ -32,6 +32,7 @@ setdiff(pdf_doc, tidy_doc)
 # remove stop words
 tidy_stop_words <- tidy_words %>%
   anti_join(stop_words) # without stop words
+
 # 597812 less words
 
 # remove numbers and symbols
@@ -80,4 +81,3 @@ write.csv(tidy_stop_num_words, "Data/clean_text_data.csv", row.names = FALSE)
 
 
 # 4/13/23 updated clean text test & remove stop words annotated text
-
