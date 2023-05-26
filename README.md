@@ -16,4 +16,4 @@ The literature review's objectives are to:
 
 Currently, [clean_text](https://github.com/Delta-Stewardship-Council/TEK_WS_text/blob/main/R/clean_text.R) can be used to create both a raw and [clean](https://github.com/Delta-Stewardship-Council/TEK_WS_text/blob/main/Data/clean_text_data.csv) text data file, which includes all PDFs considered for this review. The cleaning included removing stop words, numbers and symbols. PDFs can be found in the [Data](https://github.com/Delta-Stewardship-Council/TEK_WS_text/tree/main/Data) folder.
 
-This repository is in development (for more information: Pascale.Goertler@deltacouncil.ca.gov, Aaron.Angel@deltacouncil.ca.gov & Dylan.Stern@deltacouncil.ca.gov).
+This repository is in development (for more information: Aaron.Angel@deltacouncil.ca.gov & Dylan.Stern@deltacouncil.ca.gov).
